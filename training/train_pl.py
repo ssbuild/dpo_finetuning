@@ -13,15 +13,15 @@ from lightning import Trainer
 from lightning.pytorch.callbacks import ModelCheckpoint, LearningRateMonitor
 from lightning.pytorch.strategies import DeepSpeedStrategy
 from transformers import HfArgumentParser
-from data_utils import NN_DataHelper, train_info_args, global_args, get_deepspeed_config
-from aigc_zoo.model_zoo.auto.dpo_model import MyTransformerDPO,PetlArguments, LoraConfig
+from data_utils import NN_DataHelper, config_args, global_args, get_deepspeed_config
+from deep_training.zoo.model_zoo.auto.dpo_model import MyTransformerDPO,PetlArguments, LoraConfig
 from module_setup import global_model_card
 
 assert global_args["trainer_backend"] == "pl"
 
 def main():
     parser = HfArgumentParser((ModelArguments, TrainingArguments, DataArguments, PetlArguments))
-    model_args, training_args, data_args, lora_args = parser.parse_dict(train_info_args)
+    model_args, training_args, data_args, lora_args = parser.parse_dict(config_args)
     lora_args = lora_args.config
 
     output_weight_dir = './best_ckpt'

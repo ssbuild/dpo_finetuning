@@ -10,7 +10,6 @@ from collections import OrderedDict
 from deep_training.data_helper import ModelArguments, TrainingArguments, DataArguments, TrainingArgumentsHF, \
     TrainingArgumentsCL, TrainingArgumentsAC
 from deep_training.nlp.models.petl import PetlArguments
-from deep_training.nlp.models.petl.prompt import PromptArguments
 from transformers import HfArgumentParser
 from data_factory.data_helper_loader import (NN_DataHelper_Base,
                                              NN_DataHelper_baichuan,
@@ -71,19 +70,19 @@ if __name__ == '__main__':
     if global_args[ "trainer_backend" ] == "hf":
         parser = HfArgumentParser((ModelArguments, TrainingArgumentsHF, DataArguments, PetlArguments),
                                   conflict_handler='resolve')
-        model_args, training_args, data_args, lora_args = parser.parse_dict(train_info_args,
+        model_args, training_args, data_args, lora_args = parser.parse_dict(config_args,
                                                                                          allow_extra_keys=True, )
     elif global_args[ "trainer_backend" ] == "pl":
         parser = HfArgumentParser((ModelArguments, TrainingArguments, DataArguments, PetlArguments))
-        model_args, training_args, data_args, _ = parser.parse_dict(train_info_args)
+        model_args, training_args, data_args, _ = parser.parse_dict(config_args)
     elif global_args["trainer_backend"] == "ac":
         parser = HfArgumentParser((ModelArguments, TrainingArgumentsCL, DataArguments, PetlArguments),
                                   conflict_handler='resolve')
-        model_args, training_args, data_args, lora_args = parser.parse_dict(train_info_args, allow_extra_keys=True, )
+        model_args, training_args, data_args, lora_args = parser.parse_dict(config_args, allow_extra_keys=True, )
     else:
         parser = HfArgumentParser((ModelArguments, TrainingArgumentsAC, DataArguments, PetlArguments),
                                   conflict_handler='resolve')
-        model_args, training_args, data_args, lora_args = parser.parse_dict(train_info_args, allow_extra_keys=True, )
+        model_args, training_args, data_args, lora_args = parser.parse_dict(config_args, allow_extra_keys=True, )
 
     dataHelper = NN_DataHelper(model_args, training_args, data_args)
     tokenizer, config, _, _ = dataHelper.load_tokenizer_and_config(config_kwargs={"torch_dtype": torch.float16})

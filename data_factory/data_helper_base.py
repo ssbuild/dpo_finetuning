@@ -12,7 +12,7 @@ from functools import cache
 import numpy as np
 import torch
 from deep_training.data_helper import DataHelper
-from aigc_zoo.model_zoo.auto.dpo_model import PetlArguments,LoraConfig
+from deep_training.zoo.model_zoo.auto.dpo_model import PetlArguments,LoraConfig
 from fastdatasets.record import load_dataset as Loader, RECORD, WriterObject, gfile
 from transformers import PreTrainedTokenizer, HfArgumentParser, PretrainedConfig
 from data_factory.data_processer import DEFAULT_EOS_TOKEN, DEFAULT_BOS_TOKEN, DEFAULT_UNK_TOKEN, CorpusPreprocess, TokenIdsMaker

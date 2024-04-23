@@ -1,9 +1,10 @@
 
 ```text
-    10-09 support accelerator trainer
-    10-07 support colossalai trainer
-    09-26 support transformers trainer
-    09-15 支持transformers系列模型 dpo训练  
+    2024-04-22 简化
+    2023-10-09 support accelerator trainer
+    2023-10-07 support colossalai trainer
+    2023-09-26 support transformers trainer
+    2023-09-15 支持transformers系列模型 dpo训练  
 ```
 
 ## update information

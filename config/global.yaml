@@ -1,0 +1,100 @@
+global_args:
+  trainer_backend: pl
+  enable_deepspeed: false
+  enable_ptv2: false
+  enable_lora: true
+  load_in_bit: 0
+  config_merge: {}
+  # 模型权重 ， 对应 config.constant_map.py
+  model_name: bloom-560m
+
+  # one of auto 16 bf16 32
+  precision: auto
+  quantization_config:
+    load_in_8bit: false
+    load_in_4bit: false
+    llm_int8_threshold: 6.0
+    llm_int8_has_fp16_weight: false
+    bnb_4bit_compute_dtype: float16  # one of float16  bfloat16 float32
+    bnb_4bit_use_double_quant: true
+    bnb_4bit_quant_type: nf4
+    
+
+
+global_models_mapper:
+    bloom-560m: 
+        model_type: bloom
+        model_name_or_path: /data/nlp/pre_models/torch/bloom/bloom-560m
+    
+    bloom-1b7: 
+        model_type: bloom
+        model_name_or_path: /data/nlp/pre_models/torch/bloom/bloom-1b7
+    
+    opt-125m: 
+        model_type: opt
+        model_name_or_path: /data/nlp/pre_models/torch/opt/opt-125m
+    
+
+    opt-350m: 
+        model_type: opt
+        model_name_or_path: /data/nlp/pre_models/torch/opt/opt-350m
+    
+
+    llama-7b-hf: 
+        model_type: llama
+        model_name_or_path: /data/nlp/pre_models/torch/llama/llama-7b-hf
+    
+
+    Qwen-7B-Chat: 
+        model_type: qwen
+        model_name_or_path: /data/nlp/pre_models/torch/qwen/Qwen-7B-Chat
+    
+
+    Baichuan2-7B-Chat: 
+        model_type: baichuan
+        model_name_or_path: /data/nlp/pre_models/torch/baichuan2/Baichuan2-7B-Chat
+    
+
+    Baichuan2-13B-Chat: 
+        model_type: baichuan
+        model_name_or_path: /data/nlp/pre_models/torch/baichuan2/Baichuan2-13B-Chat
+    
+
+    Baichuan-13B-Chat: 
+        model_type: baichuan
+        model_name_or_path: /data/nlp/pre_models/torch/baichuan/Baichuan-13B-Chat
+    
+
+    XVERSE-13B-Chat: 
+        model_type: xverse
+        model_name_or_path: /data/nlp/pre_models/torch/xverse/XVERSE-13B-Chat
+    
+
+    internlm-chat-7b: 
+        model_type: internlm
+        model_name_or_path: /data/nlp/pre_models/torch/internlm/internlm-chat-7b
+    
+    internlm-chat-7b-8k: 
+        model_type: internlm
+        model_name_or_path: /data/nlp/pre_models/torch/internlm/internlm-chat-7b-8k
+    
+    Skywork-13B-base: 
+        model_type: skywork
+        model_name_or_path: /data/nlp/pre_models/torch/skywork/Skywork-13B-base
+    
+
+    Yi-6B: 
+        model_type: Yi
+        model_name_or_path: /data/nlp/pre_models/torch/yi/Yi-6B
+    
+
+    Yi-34B: 
+        model_type: Yi
+        model_name_or_path: /data/nlp/pre_models/torch/yi/Yi-34B
+    
+
+    zephyr-7b-beta: 
+        model_type: mistral
+        model_name_or_path: /data/nlp/pre_models/torch/mistral/mistral-7b-sft-beta
+    
+
